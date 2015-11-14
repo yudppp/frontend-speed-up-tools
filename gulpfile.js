@@ -96,6 +96,17 @@ gulp.task('css:app', function () {
     .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('css:uncss', function () {
+  var uncss = require('gulp-uncss');
+  return gulp.src('dist/css/lib.min.css')
+    .pipe(uncss({
+      html: [
+        'index.html'
+	  ]
+	}))
+    .pipe(gulp.dest('dist/css'));
+});
+
 gulp.task('img:app', function () {
   var imagemin = require('gulp-imagemin');
   var webp = require('gulp-webp');
